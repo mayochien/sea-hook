@@ -79,7 +79,9 @@ const mapRegions: TideMapRegion[] = [
 
 function App() {
   const selectedRegion = useSeaConditionStore((state) => state.selectedRegion);
-  const setSelectedRegion = useSeaConditionStore((state) => state.setSelectedRegion);
+  const setSelectedRegion = useSeaConditionStore(
+    (state) => state.setSelectedRegion,
+  );
   const loadDashboard = useSeaConditionStore((state) => state.loadDashboard);
 
   useEffect(() => {
@@ -103,15 +105,11 @@ function App() {
     <div className="sea-grid min-h-screen text-slate-100">
       <div className="mx-auto w-full max-w-6xl px-4 pb-12 pt-8 sm:px-6 lg:px-8">
         <header className="mb-8 overflow-hidden rounded-3xl border border-sky-200/20 bg-gradient-to-br from-cyan-500/14 via-sky-400/6 to-slate-900/14 p-6 backdrop-blur-md sm:p-8">
-          <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/85">
-            Sea Hook Daily
-          </p>
-          <h1 className="font-display tracking-wider text-2xl font-semibold text-amber-100 sm:text-2xl">
-            邊玩邊懂海
+          <h1 className="font-display mb-2 tracking-wider text-2xl font-semibold text-amber-100 sm:text-2xl">
+            大海上鉤
           </h1>
-
-          <p className="mt-4 max-w-2xl text-slate-200/90">
-            玩小遊戲 也能認真規劃出海
+          <p className="text-sm uppercase tracking-wide text-cyan-200/85">
+            把海況看懂，把海釣玩懂
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm">
             <button
@@ -159,16 +157,7 @@ function App() {
           <QuizTestForm questions={fishQuiz} />
         </section>
 
-        <section className="my-10 px-2 text-center">
-          <p className="text-sm leading-6 text-emerald-50/50">
-            永續提醒：出海前請確認當地漁業規範與禁漁公告，遵守體型與數量限制；
-          </p>
-          <p className="text-sm leading-6 text-emerald-50/50">
-            幼魚、非目標魚種或不需帶回的漁獲應妥善放流，並減少一次性用品與廢棄漁具留在海邊。
-          </p>
-        </section>
-
-        <footer className=" text-center text-sm text-cyan-100/80">
+        <footer className=" text-center text-sm text-emerald-50/50">
           <div className="flex flex-wrap justify-center gap-x-2 gap-y-0.5">
             資料來源：
             <a
@@ -207,8 +196,12 @@ function App() {
               維基百科
             </a>
           </div>
-          <p className="mt-2 text-xs text-cyan-100/65">
-            本站僅供作品展示與學習用途，不涉及任何商業行為。
+          <p className="mt-2 text-sm text-emerald-50/50">
+            <p>本站僅供個人學習、技術練習與作品展示使用，非供任何商業用途。</p>
+            <p>
+              海況資料、魚種資訊與圖片均屬中央氣象署、臺灣魚類資料庫及臺灣海鮮選擇指南所有，本站不主張相關權利。
+            </p>
+            <p>實際海況請以中央氣象署官方即時資訊為準。</p>
           </p>
         </footer>
       </div>

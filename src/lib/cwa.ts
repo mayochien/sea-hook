@@ -172,7 +172,7 @@ async function fetchWaveObservation(apiKey: string): Promise<unknown> {
   return response.json();
 }
 
-function getWaveLevel(waveHeightM: number | undefined): WaveLevel | undefined {
+export function getWaveLevel(waveHeightM: number | undefined): WaveLevel | undefined {
   if (waveHeightM === undefined) {
     return undefined;
   }

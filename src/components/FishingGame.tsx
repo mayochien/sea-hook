@@ -5,20 +5,12 @@ import type { RegionId, WaveLevel } from "../types/fishing";
 import { CatchSummaryPanel } from "./CatchSummaryPanel";
 import { FishingIntroOverlay } from "./FishingIntroOverlay";
 import { FishingScene } from "./FishingScene";
+import { resolveFishingAttempt } from "../lib/fishingGameRules";
 import { selectCurrentRegion, useSeaConditionStore } from "../store/useSeaConditionStore";
 
 interface FishingGameProps {
   fishEntries: FishEntry[];
 }
-
-// 海浪越大，就算咬鉤時機抓準了，魚也更容易脫鉤
-const catchRateByWaveLevel: Record<WaveLevel, number> = {
-  極小浪: 1,
-  小浪: 1,
-  中浪: 0.5,
-  大浪: 0.33,
-  巨浪: 0.33,
-};
 
 const waveFishingOutlookByLevel: Record<WaveLevel, string> = {
   極小浪: "適合作釣，咬鉤的機率大！",
@@ -142,21 +134,21 @@ export function FishingGame({ fishEntries }: FishingGameProps) {
         return;
       }
 
-      const success = isFishBiting;
+      const attemptResult = resolveFishingAttempt(
+        isFishBiting,
+        currentRegion.waveLevel,
+        Math.random(),
+      );
       setIsGameRunning(false);
       setIsFishBiting(false);
 
-      if (!success) {
+      if (attemptResult === "early") {
         setLastCatchFish(null);
         setGameResult("還沒咬鉤，出手太早了，再下一次！");
         return;
       }
 
-      const catchRate = currentRegion.waveLevel
-        ? catchRateByWaveLevel[currentRegion.waveLevel]
-        : 1;
-
-      if (Math.random() > catchRate) {
+      if (attemptResult === "escaped") {
         setLastCatchFish(null);
         setGameResult("浪太大，魚在拉起前脫鉤了！");
         return;

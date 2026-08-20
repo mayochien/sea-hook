@@ -50,11 +50,11 @@ export function CommonFishList({ entries }: CommonFishListProps) {
 
   return (
     <article className="rounded-3xl border border-sky-200/20 bg-gradient-to-br from-cyan-500/14 via-sky-400/6 to-slate-900/14 p-6 backdrop-blur-md sm:p-8">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <h3 className="font-display text-xl text-amber-100">
-        台灣沿海常見物種
+          台灣沿海常見物種
         </h3>
-        <label className="relative w-full sm:w-52">
+        <label className="relative ml-auto w-full sm:w-52">
           <span className="sr-only">搜尋魚的名稱</span>
           <svg
             className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-100/70"
@@ -75,7 +75,7 @@ export function CommonFishList({ entries }: CommonFishListProps) {
               setPage(0);
             }}
             placeholder="搜尋魚名稱"
-            className="w-full rounded-full border border-white/15 bg-slate-950/35 py-2 pl-9 pr-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-200/60 focus:ring-2 focus:ring-cyan-200/20"
+            className="w-full rounded-full border border-white/15 bg-slate-950/35 py-1 pl-9 pr-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-200/60 focus:ring-2 focus:ring-cyan-200/20"
           />
         </label>
       </div>
@@ -173,6 +173,16 @@ export function CommonFishList({ entries }: CommonFishListProps) {
       {pageCount > 0 ? <p className="mt-2 text-center text-xs text-slate-500">
         第 {page + 1} / {pageCount} 頁
       </p> : null}
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+        <a
+          href="https://fishdb.sinica.edu.tw/seafoodguide/"
+          target="_blank"
+          rel="noreferrer"
+          className="ml-auto text-xs text-cyan-100/70 transition hover:text-cyan-100 hover:underline"
+        >
+          圖片資料來源：臺灣海鮮選擇指南
+        </a>
+      </div>
     </article>
   );
 }
