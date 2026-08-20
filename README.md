@@ -7,13 +7,11 @@
 - [README.md](README.md)：本文件，完整技術架構與設計決策。
 - [README_DEV_GUIDE.md](README_DEV_GUIDE.md)：開發備查筆記（非主要閱讀）。
 
-## Live Demo
-
-[前往 Live Demo 線上展示](https://sea-hook.vercel.app/)
-
 ## 專案簡介
 
 Sea Hook（大海上鉤）是一個結合即時海況與互動遊戲的台灣海域探索網站。串接中央氣象署的浪高與潮汐開放資料，把海況資訊轉換成互動地圖與圖表，並設計一個依真實浪況調整難度的海釣互動小遊戲，加上魚種圖鑑與知識測驗，讓使用者能一邊玩、一邊認識台灣沿海的漁業與海況資訊。
+
+[Live Demo 線上展示](https://sea-hook.vercel.app/)
 
 ## 名稱由來
 
