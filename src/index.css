@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Azeret Mono", "Noto Sans TC", "Segoe UI", sans-serif;
+  --font-sans: "Noto Sans TC", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button:not(:disabled):hover {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.14), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(125, 211, 252, 0.18), transparent 40%),
+    linear-gradient(160deg, #0a1024 0%, #04243e 48%, #05365f 100%);
+  color: #ecfeff;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.sea-grid {
+  position: relative;
+}
+
+.sea-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(125, 211, 252, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, 0.14) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes wave-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.wave-flow {
+  animation: wave-scroll 2.4s linear infinite;
+}
+
+@keyframes hook-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(94, 234, 212, 0.45), 0 0 0 0 rgba(94, 234, 212, 0.45);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 24px rgba(94, 234, 212, 0.65), 0 0 0 12px rgba(94, 234, 212, 0);
+  }
+}
+
+.hook-pulse {
+  animation: hook-pulse 1.8s ease-out infinite;
+}
+
+@keyframes tide-now-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes tide-now-label-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(216, 180, 254, 0);
+    filter: brightness(0.9);
+  }
+  50% {
+    box-shadow: 0 0 5px rgba(216, 180, 254, 0.5);
+    filter: brightness(1.2);
+  }
+}
+
+.tide-now-pulse {
+  animation: tide-now-pulse 1.4s ease-in-out infinite;
+}
+
+.tide-now-label-pulse {
+  animation: tide-now-label-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes score-pulse {
+  0%,
+  100% {
+    color: rgb(203 213 225);
+    text-shadow: none;
+  }
+  45% {
+    color: rgb(134 239 172);
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.9);
+  }
+}
+
+.score-pulse {
+  animation: score-pulse 700ms ease-out;
+}
